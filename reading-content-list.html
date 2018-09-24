@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/wap.css">
+  <title>阅读内容列表页</title>
+</head>
+<body style="background:#ececec">
+  <!--     主体内容     -->
+  <div class="poem_mian" >
+    <!--    头部      -->
+    <div class="poem_head">
+      <header data-am-widget="header"
+          class="am-header am-header-default poem_head_block">
+
+        <div class="am-header-left am-header-nav ">
+          <!--    返回超链接      -->
+          <a href="#left-link" class="iconfont poem_head_jt_ico">&#xe601;</a>
+          <!--    //返回超链接      -->
+        </div>
+         <h1 class="am-header-title poem_article_user">
+            <span class="poem_name">每天一篇古诗文</span>
+          </h1>
+      </header>
+    </div>
+    <!--    头部      -->
+
+    <!--    古诗文列表    -->
+    <div class="poem_content poem_content_list">
+      <div class="poem_article_like">
+        <div class="poem_content_main poem_article_like_delete">
+          <div data-am-widget="list_poems" class="am-list-poems am-list-poems-default am-no-layout">
+            <div class="am-list-poems-bd">
+              <ul class="am-list">
+                <!--for循环-->
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right poem_list_one_block">
+                  <a href="###" class="">
+                    <div class=" am-u-sm-8 am-list-main poem_list_one_nr">
+                        <h3 class="am-list-item-hd poem_list_one_bt">静夜思</h3>
+                        <div class="am-list-item-text poem_list_one_text">作者：李白&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;朝代：唐代</div>
+                    </div>
+                      <div class="am-u-sm-4 am-list-thumb">
+                        <img src="images/q1.jpg" class="poem_list_one_img" />
+                      </div>
+                    </a>
+                </li>
+                <!--for循环-->
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--     主体内容     -->
+    <!--      js        -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/amazeui.min.js"></script>
+    <script>
+      $(function(){
+
+          // 动态计算古诗文列表文字样式
+          auto_resize();
+          $(window).resize(function() {
+              auto_resize();
+          });
+          $('.am-list-thumb img').load(function(){
+              auto_resize();
+          });
+          $('.poem_article_like li:last-child').css('border','none');
+              function auto_resize(){
+              $('.poem_list_one_nr').height($('.poem_list_one_img').height());
+                      // alert($('.poem_list_one_nr').height());
+          }
+              $('.poem_article_user').on('click',function(){
+                  if($('.poem_article_user_info_tab').hasClass('poem_article_user_info_tab_show')){
+                      $('.poem_article_user_info_tab').removeClass('poem_article_user_info_tab_show').addClass('poem_article_user_info_tab_cloes');
+                  }else{
+                      $('.poem_article_user_info_tab').removeClass('poem_article_user_info_tab_cloes').addClass('poem_article_user_info_tab_show');
+                  }
+              });
+
+              $('.poem_head_gd_ico').on('click',function(){
+                  $('.poem_more_list').addClass('poem_more_list_show');
+             });
+              $('.poem_more_close').on('click',function(){
+                  $('.poem_more_list').removeClass('poem_more_list_show');
+              });
+      });
+  </script>
+  <!--      js        -->
+</body>
+</html>

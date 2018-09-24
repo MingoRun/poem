@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="css/amazeui.min.css">
+	<link rel="stylesheet" href="css/wap.css">
+	<link rel="stylesheet" href="css/webiaoqing.css">
+	<script src="js/jquery-3.3.1.min.js" ></script>
+	<script src="js/webiaoqin.js" ></script>
+	<title>写留言内容页</title>
+</head>
+<body style="background:#ececec">
+  <!--     主体内容     -->
+  <div class="poem_mian" >
+  	<!--    头部      -->
+    <div class="poem_head">
+      <header data-am-widget="header"
+          class="am-header am-header-default poem_head_block">
+
+        <div class="am-header-left am-header-nav ">
+          <!--    返回超链接      -->
+          <a href="#left-link" class="iconfont poem_head_jt_ico">&#xe601;</a>
+          <!--    //返回超链接      -->
+        </div>
+         <h1 class="am-header-title poem_article_user">
+            <span class="poem_name">每天一篇古诗文</span>
+          </h1>
+      </header>
+    </div>
+    <!--    头部      -->
+
+    <div class="poem_content">
+    	<!--     古诗文题目     -->
+    	<h2 style="margin:15px 0 15px 15px;">静夜思</h2>
+    	<!--     //古诗文题目     -->
+
+    	<!--     form表单     -->
+    	<form>
+    		<!--     写留言内容         -->
+	    	<div class="poem_content_block">
+	    	<!--    可编辑区域    -->
+	    	<article class="poem_comments" name="content" id="form_article" contenteditable="true" onkeydown="myInput.listen(this, event);">
+	    	</article>
+	    	<!--    //可编辑区域    -->
+	    	<!-- 笑脸图片按钮 -->
+	    	<img src="images/look.png" style="width:50px;margin-left:10px;margin-bottom: 15px;">
+	    	<!-- //笑脸图片 -->
+	        </div>
+
+	        <div class="page_emotion box_swipe" id="page_emotion">
+				<dl id="list_emotion" class="list_emotion pt_10"></dl><!-- 表情框 -->
+				<dt><ol id="nav_emotion" class="nav_emotion"></ol></dt><!-- 分页提示点 -->
+		    </div>
+
+	        <!--     留言提交按钮      -->
+			<div class="poem_content_comments">
+				<input type="button" class="poem_content_comments_button" type="submit" value="留言" >
+			</div>
+			<!--     //留言提交按钮    -->
+	        <!--     //写留言内容         -->
+        </form>
+        <!--     //form表单     -->
+    </div>
+	
+  </div>
+  <script>
+	$(function(){
+		var say = '';
+		if ($("#form_article").html() === "") {
+			$("#form_article").html(say);
+		}
+		$("#form_article").click(function(){
+            if($("#form_article").html() == say){
+               	$("#form_article").html("");
+            }
+	    });
+	    $("#page_emotion  dd").click(function(){
+            $("#form_article").html( $("#form_article").html().replace(say, '') );
+	    });
+	});
+
+	//显示和隐藏div
+	$("img").click(function(){
+			if($("#page_emotion").css("display")=="none"){
+				$("#page_emotion").show();
+			}else{
+				$("#page_emotion").hide();
+			}
+		});
+	</script>
+</body>
+</html>
